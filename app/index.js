@@ -3,12 +3,10 @@ const fs = require("fs");
 const path = require("path");
 const {
   Client,
-  Events,
   GatewayIntentBits,
-  SlashCommandBuilder,
+  REST,
+  Routes,
   Collection,
-  MessageEmbed,
-  MessageFlags,
 } = require("discord.js");
 
 const token = process.env.TOKEN;
@@ -21,6 +19,8 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 // Command and event handling
 client.commands = new Collection();
 
+console.log("Loading commands and events...");
+
 // Load commands
 const commandsPath = path.join(__dirname, "commands");
 const commandFolders = fs.readdirSync(commandsPath);
@@ -31,12 +31,19 @@ for (const folder of commandFolders) {
     .filter((file) => file.endsWith(".js"));
   for (const file of commandFiles) {
     const filePath = path.join(folderPath, file);
-    const command = require(filePath);
-    if ("data" in command && "execute" in command) {
-      client.commands.set(command.data.name, command);
-    } else {
-      console.log(
-        `[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`,
+    try {
+      const command = require(filePath);
+      if ("data" in command && "execute" in command) {
+        client.commands.set(command.data.name, command);
+      } else {
+        console.log(
+          `[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`,
+        );
+      }
+    } catch (error) {
+      console.error(
+        `[ERROR] Failed to load command at ${filePath}:`,
+        error.message,
       );
     }
   }

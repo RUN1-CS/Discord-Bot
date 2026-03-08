@@ -4,11 +4,13 @@
  * Made by ルン1 ©2025
  *  */
 const { SlashCommandBuilder } = require("discord.js");
-const { Linus_quotes } = require("/commands/assets/lines.json");
+const lines = require("../assets/lines.json");
+
+const Linus_quotes = lines.quotes;
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("linus quote")
+    .setName("linusquote")
     .setDescription("Sends a random Linus Torvalds quote."),
   async execute(interaction) {
     const randomIndex = Math.floor(Math.random() * Linus_quotes.length);

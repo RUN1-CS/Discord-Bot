@@ -10,34 +10,36 @@ module.exports = {
     .setName("introduce")
     .setDescription("Introduces the user.")
     .addStringOption((option) => {
-      option.setName("nickname").setDescription("Your preferred nickname.");
+      return option
+        .setName("nickname")
+        .setDescription("Your preferred nickname.");
     })
     .addStringOption((option) => {
-      option.setName("hobby").setDescription("Your favorite hobby.");
+      return option.setName("hobby").setDescription("Your favorite hobby.");
     })
     .addStringOption((option) => {
-      option.setName("fun_fact").setDescription("A fun fact about you.");
+      return option.setName("fun_fact").setDescription("A fun fact about you.");
     })
     .addStringOption((option) => {
-      option
+      return option
         .setName("distribution")
         .setDescription("Your favorite Linux distribution.");
     })
     .addStringOption((option) => {
-      option
+      return option
         .setName("programming_language")
         .setDescription("Your favorite programming language.");
     })
     .addStringOption((option) => {
-      option
+      return option
         .setName("window_manager")
         .setDescription("Your favorite window manager.");
     })
     .addStringOption((option) => {
-      option.setName("ide").setDescription("Your favorite IDE.");
+      return option.setName("ide").setDescription("Your favorite IDE.");
     })
     .addStringOption((option) => {
-      option.setName("shell").setDescription("Your favorite shell.");
+      return option.setName("shell").setDescription("Your favorite shell.");
     }),
   async execute(interaction) {
     const user = interaction.user;

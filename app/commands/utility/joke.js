@@ -4,7 +4,9 @@
  * Made by ルン1 ©2025
  *  */
 const { SlashCommandBuilder } = require("discord.js");
-const { jokes } = require("/commands/assets/lines.json");
+const lines = require("../assets/lines.json");
+
+const jokes = lines.jokes;
 
 module.exports = {
   data: new SlashCommandBuilder()

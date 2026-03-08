@@ -4,11 +4,13 @@
  * Made by ルン1 ©2025
  *  */
 const { SlashCommandBuilder } = require("discord.js");
-const { Linux_quotes } = require("/commands/assets/lines.json");
+const lines = require("../assets/lines.json");
+
+const Linux_quotes = lines.quotes;
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("linux quote")
+    .setName("linuxquote")
     .setDescription("Sends a random Linux quote."),
   async execute(interaction) {
     const randomIndex = Math.floor(Math.random() * Linux_quotes.length);

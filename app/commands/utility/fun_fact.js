@@ -4,11 +4,13 @@
  * Made by ルン1 ©2025
  *  */
 const { SlashCommandBuilder } = require("discord.js");
-const { fun_facts } = require("/commands/assets/lines.json");
+const lines = require("../assets/lines.json");
+
+const fun_facts = lines.facts;
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("fun fact")
+    .setName("funfact")
     .setDescription("Sends a random fun fact."),
   async execute(interaction) {
     const randomIndex = Math.floor(Math.random() * fun_facts.length);
