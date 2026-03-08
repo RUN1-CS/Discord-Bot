@@ -1,0 +1,55 @@
+/**
+ * /commands/assets/lines.jsonc
+ * This file contains the JSON data for various categories of lines.
+ * Made by ルン1 ©2025
+ *  */
+{
+  "fun_facts": [
+    "Linux was created by Linus Torvalds in 1991 as a hobby project while he was a student at the University of Helsinki.",
+    "The name 'Linux' comes from Linus Torvalds' first name combined with 'Unix', the operating system that inspired it.",
+    "Tux the penguin became the official mascot of Linux in 1996 after Linus Torvalds chose it following his encounter with a penguin.",
+    "Unix systems use the concept of 'everything is a file', treating devices, directories, and processes as files in the filesystem.",
+    "The '/' character is used as the root directory separator in Unix/Linux file paths, while Windows uses backslashes.",
+    "Unix timestamps count seconds since January 1, 1970 (the Unix epoch), which will cause a problem on January 19, 2038.",
+    "The Linux kernel source code is over 20 million lines long and is maintained by thousands of developers worldwide.",
+    "Unix permissions are represented by three digits (owner, group, other) with read (4), write (2), and execute (1) values.",
+    "Bell Labs created Unix in 1969, and it became the foundation for modern operating systems including Linux, macOS, and BSD.",
+    "Linux is the most used operating system in the world, powering everything from smartphones (Android) to supercomputers and web servers."
+  ],
+  "jokes": [
+    "Why do programmers prefer dark mode? Because light attracts bugs!",
+    "Why do Java developers wear glasses? Because they don't see sharp.",
+    "How many programmers does it take to change a light bulb? None, that's a hardware problem.",
+    "Why was the computer late? It had a hard drive.",
+    "How did the hacker escape the police? He just ransomware.",
+    "windows",
+    "Why do programmers hate nature? It has too many bugs.",
+    "Why did the developer go broke? Because he used up all his cache.",
+    "How do you comfort a JavaScript bug? You console it.",
+    "If microsoft ever does something that doesn't suck, it will be a vacuum cleaner."
+  ],
+  "Linus_quotes": [
+    "A computer is like air conditioning - it becomes useless when you open windows. \n ~ Linus Torvalds",
+    "Intelligence is the ability to avoid doing work, yet getting the work done. \n ~ Linus Torvalds",
+    "Those that can, do. Those that can't, complain. \n ~ Linus Torvalds",
+    "I like offending people, because I think people who get offended should be offended. \n ~ Linus Torvalds",
+    "Talk is cheap. Show me the code. \n ~ Linus Torvalds",
+    "Most of the good programmers do programming not because they expect to get paid or get adulation by the public, but because it is fun to program. \n ~ Linus Torvalds",
+    "Bad programmers worry about the code. Good programmers worry about data structures and their relationships. \n ~ Linus Torvalds",
+    "Avoiding complexity reduces bugs. \n ~ Linus Torvalds",
+    "If Microsoft ever does applications for Linux it means I've won. \n ~ Linus Torvalds",
+    "My name is Linus, and I am your God. \n ~ Linus Torvalds"
+  ],
+  "Linux_quotes": [
+    "The Linux philosophy is 'laugh in the face of danger'. Oops. Wrong one. 'Do it yourself'. That's it. \n ~ Linus Torvalds",
+    "We all know Linux is great...it does infinite loops in 5 seconds. \n ~ Linus Torvalds",
+    "All the best people in life seem to like LINUX. \n ~ Steve Wozniak",
+    "Oh, I've seen copies [of Linux Journal] around the terminal room at The Labs. \n ~ Dennis Ritchie",
+    "Cosmoe works on any of the standard filesystems available for Linux. \n ~ Bill Hayden",
+    "A multithreaded file system is only a performance hack. \n ~ Andrew S. Tanenbaum",
+    "Making Linux GPL'd was definitely the best thing I ever did. \n ~ Linus Torvalds",
+    "Microsoft is not the answer. Microsoft is the question. NO is the answer. \n ~ Erik Naggum",
+    "I think Linux is a great thing, in the big picture. It's a great hacker's tool, and it has a lot of potential to become something more. \n ~ Jammie Zawinski"
+  ],
+  "memes": []
+}

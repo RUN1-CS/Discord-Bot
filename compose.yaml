@@ -1,0 +1,13 @@
+version: "v1.0"
+
+services:
+  app:
+    build: app/
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: always
+    networks:
+      - LINUX_OPERATOR
+networks:
+  LINUX_OPERATOR:
+    driver: bridge
