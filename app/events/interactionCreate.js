@@ -3,33 +3,34 @@
  * This file contains the event handler for when an interaction is created.
  * Made by ルン1 ©2025
  *  */
-const { Events, MessageFlags } = require("discord.js");
+const { Events, InteractionType } = require("discord.js");
 
 module.exports = {
   name: Events.InteractionCreate,
   async execute(interaction) {
-    if (!interaction.isChatInputCommand()) return;
-    const command = client.commands.get(interaction.commandName);
+    // Only handle slash commands
+    if (interaction.type !== InteractionType.ApplicationCommand) return;
+
+    // Access client via interaction
+    const command = interaction.client.commands.get(interaction.commandName);
     if (!command) {
-      console.error(
-        `No command matching ${interaction.commandName} was found.`,
-      );
+      console.error(`No command matching ${interaction.commandName} found.`);
       return;
     }
 
     try {
       await command.execute(interaction);
     } catch (error) {
-      console.error(`Error executing ${interaction.commandName}`);
+      console.error(`Error executing ${interaction.commandName}:`, error);
       if (interaction.replied || interaction.deferred) {
         await interaction.followUp({
-          content: "There was an error while executing this command!",
-          flags: MessageFlags.Ephemeral,
+          content: "There was an error executing this command!",
+          ephemeral: true,
         });
       } else {
         await interaction.reply({
-          content: "There was an error while executing this command!",
-          flags: MessageFlags.Ephemeral,
+          content: "There was an error executing this command!",
+          ephemeral: true,
         });
       }
     }

@@ -6,7 +6,7 @@
 const { SlashCommandBuilder } = require("discord.js");
 const lines = require("../assets/lines.json");
 
-const Linux_quotes = lines.quotes;
+const Linux_quotes = lines.Linux_quotes;
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -15,6 +15,6 @@ module.exports = {
   async execute(interaction) {
     const randomIndex = Math.floor(Math.random() * Linux_quotes.length);
     const randomQuote = Linux_quotes[randomIndex];
-    await interaction.reply(randomQuote);
+    await interaction.reply({ content: randomQuote });
   },
 };

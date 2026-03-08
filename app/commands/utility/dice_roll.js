@@ -17,13 +17,17 @@ module.exports = {
     ),
   async execute(interaction) {
     const sides = interaction.options.getInteger("sides");
+
     if (sides < 1) {
-      await interaction.reply(
-        "Please enter a valid number of sides (at least 1).",
-      );
+      await interaction.reply({
+        content: "Please enter a valid number of sides (at least 1).",
+      });
       return;
     }
+
     const result = Math.floor(Math.random() * sides) + 1;
-    await interaction.reply(`You rolled a ${result} on a ${sides}-sided dice!`);
+    await interaction.reply({
+      content: `You rolled a ${result} on a ${sides}-sided dice!`,
+    });
   },
 };

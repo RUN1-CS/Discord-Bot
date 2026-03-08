@@ -15,6 +15,6 @@ module.exports = {
   async execute(interaction) {
     const randomIndex = Math.floor(Math.random() * memes.length);
     const randomMeme = memes[randomIndex];
-    await interaction.reply(randomMeme);
+    await interaction.reply({ content: randomMeme });
   },
 };
