@@ -30,9 +30,9 @@ A Discord slash-command bot focused on Linux-themed utility/fun commands.
 
 ## Setup
 
-1. Copy env template:
-   - `.env.example` → `.env`
-2. Fill values in [.env](.env):
+1. Copy config template:
+   - `app/config.json.example` → `app/config.json`
+2. Fill values in [app/config.json](app/config.json):
    - `TOKEN`
    - `CLIENT_ID`
    - `GUILD_ID`
@@ -50,13 +50,12 @@ From project root:
 
 - The bot currently has no npm scripts in [app/package.json](app/package.json), so use `node index.js` directly.
 - [compose.yaml](compose.yaml) currently builds from root, while Dockerfile is in [app/Dockerfile](app/Dockerfile). If using Docker Compose, adjust build context/dockerfile path accordingly.
-- Keep `.env` private and never commit real secrets.
+- Keep `config.json` private and never commit real secrets.
 
 ## Project layout
 
 - [readme.md](readme.md)
-- [.env.example](.env.example)
-- [.gitignore](.gitignore)
+- [config.json.example](app/config.json.example)
 - [compose.yaml](compose.yaml)
 - [app/index.js](app/index.js)
 - [app/package.json](app/package.json)
