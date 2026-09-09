@@ -28,8 +28,15 @@ module.exports = {
     const channel = interaction.options.getChannel("channel");
     if (channel) {
       await channel.send({ content: message });
+      await interaction.reply({
+        content: `Message echoed in ${channel}.`,
+        ephemeral: true,
+      });
     } else {
-      await interaction.reply({ content: message });
+      await interaction.reply({
+        content: "Please specify a channel to send the echoed message.",
+        ephemeral: true,
+      });
     }
   },
 };
