@@ -3,7 +3,7 @@
  * This file contains the event handler for when an interaction is created.
  * Made by ルン1 ©2025
  *  */
-const { Events, InteractionType } = require("discord.js");
+const { Events, InteractionType, MessageFlags } = require("discord.js");
 
 module.exports = {
   name: Events.InteractionCreate,
@@ -25,12 +25,12 @@ module.exports = {
       if (interaction.replied || interaction.deferred) {
         await interaction.followUp({
           content: "There was an error executing this command!",
-          ephemeral: true,
+          flags: MessageFlags.Ephemeral,
         });
       } else {
         await interaction.reply({
           content: "There was an error executing this command!",
-          ephemeral: true,
+          flags: MessageFlags.Ephemeral,
         });
       }
     }
