@@ -10,11 +10,12 @@ const path = require("path");
 const {
   Client,
   Collection,
+  Events,
   GatewayIntentBits,
   REST,
   Routes,
 } = require("discord.js");
-const { token, clientId, guildId } = require("./config.json");
+const { token, guildId } = require("./config.json");
 
 // Create the client
 const client = new Client({
@@ -69,16 +70,15 @@ for (const file of eventFiles) {
   }
 }
 
-// -------- Register slash commands --------
-(async () => {
+// -------- Register slash commands after login --------
+client.once(Events.ClientReady, async (readyClient) => {
   try {
     console.log(`Started refreshing ${client.commands.size} slash commands...`);
 
     const rest = new REST({ version: "10" }).setToken(token);
 
-    // For testing in one guild
     const data = await rest.put(
-      Routes.applicationGuildCommands(clientId, guildId),
+      Routes.applicationGuildCommands(readyClient.application.id, guildId),
       { body: client.commands.map((command) => command.data.toJSON()) },
     );
 
@@ -86,7 +86,7 @@ for (const file of eventFiles) {
   } catch (error) {
     console.error("Error registering slash commands:", error);
   }
-})();
+});
 
 // -------- Login --------
 client

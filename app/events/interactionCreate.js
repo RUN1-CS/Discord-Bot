@@ -3,18 +3,23 @@
  * This file contains the event handler for when an interaction is created.
  * Made by ルン1 ©2025
  *  */
-const { Events, InteractionType, MessageFlags } = require("discord.js");
+const { Events, MessageFlags } = require("discord.js");
 
 module.exports = {
   name: Events.InteractionCreate,
   async execute(interaction) {
-    // Only handle slash commands
-    if (interaction.type !== InteractionType.ApplicationCommand) return;
+    if (!interaction.isChatInputCommand()) return;
 
     // Access client via interaction
     const command = interaction.client.commands.get(interaction.commandName);
     if (!command) {
       console.error(`No command matching ${interaction.commandName} found.`);
+      await interaction
+        .reply({
+          content: "This command is no longer available. Please try again.",
+          flags: MessageFlags.Ephemeral,
+        })
+        .catch(() => {});
       return;
     }
 
