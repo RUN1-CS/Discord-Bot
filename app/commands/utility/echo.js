@@ -4,9 +4,7 @@
  * Made by ルン1 ©2025
  *  */
 
-const { MessageFlags, SlashCommandBuilder } = require("discord.js");
-
-const handledInteractions = new Set();
+const { SlashCommandBuilder } = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -25,14 +23,10 @@ module.exports = {
         .setRequired(false),
     )
     .setDefaultMemberPermissions(0), // This command is restricted to users with administrator permissions
+  ephemeral: true,
   async execute(interaction) {
-    if (handledInteractions.has(interaction.id)) return;
-    handledInteractions.add(interaction.id);
-
     const message = interaction.options.getString("message");
     const channel = interaction.options.getChannel("channel");
-
-    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
     if (channel) {
       await channel.send({ content: message });

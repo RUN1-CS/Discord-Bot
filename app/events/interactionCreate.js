@@ -19,13 +19,17 @@ module.exports = {
     }
 
     try {
+      await interaction.deferReply(
+        command.ephemeral ? { flags: MessageFlags.Ephemeral } : undefined,
+      );
       await command.execute(interaction);
     } catch (error) {
       console.error(`Error executing ${interaction.commandName}:`, error);
+      if (error.code === 10062) return;
+
       if (interaction.replied || interaction.deferred) {
-        await interaction.followUp({
+        await interaction.editReply({
           content: "There was an error executing this command!",
-          flags: MessageFlags.Ephemeral,
         });
       } else {
         await interaction.reply({

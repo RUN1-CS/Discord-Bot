@@ -15,6 +15,6 @@ module.exports = {
   async execute(interaction) {
     const randomIndex = Math.floor(Math.random() * fun_facts.length);
     const randomFact = fun_facts[randomIndex];
-    await interaction.reply({ content: randomFact });
+    await interaction.editReply({ content: randomFact });
   },
 };

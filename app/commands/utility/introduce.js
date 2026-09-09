@@ -93,7 +93,7 @@ module.exports = {
       .addFields(...fields)
       .setTimestamp();
 
-    await interaction.reply({
+    await interaction.editReply({
       embeds: [embed],
     });
   },

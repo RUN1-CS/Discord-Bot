@@ -15,6 +15,6 @@ module.exports = {
   async execute(interaction) {
     const randomIndex = Math.floor(Math.random() * linusQuotes.length);
     const randomQuote = linusQuotes[randomIndex];
-    await interaction.reply({ content: randomQuote });
+    await interaction.editReply({ content: randomQuote });
   },
 };

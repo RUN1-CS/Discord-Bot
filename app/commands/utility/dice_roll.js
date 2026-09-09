@@ -19,14 +19,14 @@ module.exports = {
     const sides = interaction.options.getInteger("sides");
 
     if (sides < 1) {
-      await interaction.reply({
+      await interaction.editReply({
         content: "Please enter a valid number of sides (at least 1).",
       });
       return;
     }
 
     const result = Math.floor(Math.random() * sides) + 1;
-    await interaction.reply({
+    await interaction.editReply({
       content: `You rolled a ${result} on a ${sides}-sided dice!`,
     });
   },
