@@ -5,6 +5,7 @@ const {
 } = require("discord.js");
 
 module.exports = {
+  ephemeral: true,
   data: new SlashCommandBuilder()
     .setName("unban")
     .setDescription("Unban a user (paste their user ID in the user field)")
@@ -29,7 +30,6 @@ module.exports = {
     const reason =
       interaction.options.getString("reason") ?? "No reason provided";
 
-    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
     // Make sure the user is actually banned
     const ban = await interaction.guild.bans

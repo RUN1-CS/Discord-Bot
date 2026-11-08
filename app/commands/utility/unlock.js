@@ -6,6 +6,7 @@ const {
 } = require("discord.js");
 
 module.exports = {
+  ephemeral: true,
   data: new SlashCommandBuilder()
     .setName("unlock")
     .setDescription("Unlock a previously locked channel")
@@ -34,7 +35,6 @@ module.exports = {
     const { guild } = interaction;
     const botMember = guild.members.me;
 
-    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
     if (
       ![ChannelType.GuildText, ChannelType.GuildAnnouncement].includes(

@@ -24,6 +24,7 @@ function formatDuration(input) {
 }
 
 module.exports = {
+  ephemeral: true,
   data: new SlashCommandBuilder()
     .setName("purge")
     .setDescription("Delete a user's messages in this channel")
@@ -49,7 +50,6 @@ module.exports = {
     const timeInput = interaction.options.getString("time");
     const channel = interaction.channel;
 
-    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
     // Validate time
     let cutoff = 0; // 0 = no time limit

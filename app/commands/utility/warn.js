@@ -29,6 +29,7 @@ function saveWarnings(data) {
 }
 
 module.exports = {
+  ephemeral: true,
   data: new SlashCommandBuilder()
     .setName("warn")
     .setDescription("Warn a user (3 strikes = ban recommendation)")
@@ -52,7 +53,6 @@ module.exports = {
     const targetUser = interaction.options.getUser("user", true);
     const reason = interaction.options.getString("reason", true);
 
-    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
     if (targetUser.bot) {
       return interaction.editReply("You can't warn a bot.");

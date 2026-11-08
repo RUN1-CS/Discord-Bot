@@ -5,6 +5,7 @@ const {
 } = require("discord.js");
 
 module.exports = {
+  ephemeral: true,
   data: new SlashCommandBuilder()
     .setName("ban")
     .setDescription("Ban a user from this server")
@@ -28,7 +29,6 @@ module.exports = {
     const targetUser = interaction.options.getUser("user", true);
     const reason = interaction.options.getString("reason", true);
 
-    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
     // Basic sanity checks
     if (targetUser.id === interaction.user.id) {

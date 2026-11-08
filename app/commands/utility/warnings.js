@@ -22,6 +22,7 @@ function loadWarnings() {
 }
 
 module.exports = {
+  ephemeral: true,
   data: new SlashCommandBuilder()
     .setName("warnings")
     .setDescription("Show the warnings of a user")
@@ -37,7 +38,6 @@ module.exports = {
   async execute(interaction) {
     const targetUser = interaction.options.getUser("user", true);
 
-    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
     const userData = loadWarnings()?.[interaction.guildId]?.[targetUser.id];
 

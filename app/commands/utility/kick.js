@@ -5,6 +5,7 @@ const {
 } = require("discord.js");
 
 module.exports = {
+  ephemeral: true,
   data: new SlashCommandBuilder()
     .setName("kick")
     .setDescription("Kick a member from this server")
@@ -28,7 +29,6 @@ module.exports = {
     const targetUser = interaction.options.getUser("user", true);
     const reason = interaction.options.getString("reason", true);
 
-    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
     if (targetUser.id === interaction.user.id) {
       return interaction.editReply("You can't kick yourself.");

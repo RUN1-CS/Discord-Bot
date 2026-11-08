@@ -23,6 +23,7 @@ function parseDuration(input) {
 }
 
 module.exports = {
+  ephemeral: true,
   data: new SlashCommandBuilder()
     .setName("timeout")
     .setDescription(
@@ -55,7 +56,6 @@ module.exports = {
     const durationInput = interaction.options.getString("duration", true);
     const reason = interaction.options.getString("reason", true);
 
-    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
     const duration = parseDuration(durationInput);
     if (!duration) {

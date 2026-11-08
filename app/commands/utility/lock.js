@@ -6,6 +6,7 @@ const {
 } = require("discord.js");
 
 module.exports = {
+  ephemeral: true,
   data: new SlashCommandBuilder()
     .setName("lock")
     .setDescription("Lock a channel so only admins can send messages")
@@ -34,7 +35,6 @@ module.exports = {
     const { guild } = interaction;
     const botMember = guild.members.me;
 
-    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
     if (
       ![ChannelType.GuildText, ChannelType.GuildAnnouncement].includes(

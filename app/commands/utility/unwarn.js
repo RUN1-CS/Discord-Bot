@@ -28,6 +28,7 @@ function saveWarnings(data) {
 }
 
 module.exports = {
+  ephemeral: true,
   data: new SlashCommandBuilder()
     .setName("unwarn")
     .setDescription("Remove strike points from a user")
@@ -52,7 +53,6 @@ module.exports = {
     const targetUser = interaction.options.getUser("user", true);
     const points = interaction.options.getInteger("strike_points", true);
 
-    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
     const warnings = loadWarnings();
     const userData = warnings?.[interaction.guildId]?.[targetUser.id];
