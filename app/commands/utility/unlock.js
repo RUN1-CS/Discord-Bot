@@ -1,8 +1,12 @@
+/**
+ * /commands/utility/unlock.js
+ * This file contains the command implementation for unlocking a channel.
+ * Made by ルン1 ©2026
+ *  */
 const {
   SlashCommandBuilder,
   PermissionFlagsBits,
   ChannelType,
-  MessageFlags,
 } = require("discord.js");
 
 module.exports = {
@@ -34,7 +38,6 @@ module.exports = {
       interaction.options.getString("reason") ?? "No reason provided";
     const { guild } = interaction;
     const botMember = guild.members.me;
-
 
     if (
       ![ChannelType.GuildText, ChannelType.GuildAnnouncement].includes(

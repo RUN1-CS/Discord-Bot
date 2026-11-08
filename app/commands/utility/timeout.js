@@ -1,8 +1,9 @@
-const {
-  SlashCommandBuilder,
-  PermissionFlagsBits,
-  MessageFlags,
-} = require("discord.js");
+/**
+ * /commands/utility/timeout.js
+ * This file contains the command implementation for timing out a user.
+ * Made by ルン1 ©2026
+ *  */
+const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
 
 const UNIT_MS = { s: 1000, m: 60_000, h: 3_600_000, d: 86_400_000 };
 const UNIT_NAMES = { s: "second", m: "minute", h: "hour", d: "day" };
@@ -55,7 +56,6 @@ module.exports = {
     const targetUser = interaction.options.getUser("user", true);
     const durationInput = interaction.options.getString("duration", true);
     const reason = interaction.options.getString("reason", true);
-
 
     const duration = parseDuration(durationInput);
     if (!duration) {

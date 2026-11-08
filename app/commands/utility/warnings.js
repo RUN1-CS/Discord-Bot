@@ -1,8 +1,12 @@
+/**
+ * /commands/utility/warnings.js
+ * This file contains the command implementation for showing the warnings of a user.
+ * Made by ルン1 ©2026
+ *  */
 const {
   SlashCommandBuilder,
   PermissionFlagsBits,
   EmbedBuilder,
-  MessageFlags,
 } = require("discord.js");
 const fs = require("node:fs");
 const path = require("node:path");
@@ -37,7 +41,6 @@ module.exports = {
 
   async execute(interaction) {
     const targetUser = interaction.options.getUser("user", true);
-
 
     const userData = loadWarnings()?.[interaction.guildId]?.[targetUser.id];
 

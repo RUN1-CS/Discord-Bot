@@ -1,3 +1,8 @@
+/**
+ * /commands/utility/ticket.js
+ * This file contains the command implementation for creating a ticket.
+ * Made by ルン1 ©2026
+ *  */
 const {
   SlashCommandBuilder,
   PermissionFlagsBits,

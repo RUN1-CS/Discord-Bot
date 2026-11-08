@@ -1,8 +1,9 @@
-const {
-  SlashCommandBuilder,
-  PermissionFlagsBits,
-  MessageFlags,
-} = require("discord.js");
+/**
+ * /commands/utility/kick.js
+ * This file contains the command implementation for kicking a user.
+ * Made by ルン1 ©2026
+ *  */
+const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
 
 module.exports = {
   ephemeral: true,
@@ -28,7 +29,6 @@ module.exports = {
   async execute(interaction) {
     const targetUser = interaction.options.getUser("user", true);
     const reason = interaction.options.getString("reason", true);
-
 
     if (targetUser.id === interaction.user.id) {
       return interaction.editReply("You can't kick yourself.");

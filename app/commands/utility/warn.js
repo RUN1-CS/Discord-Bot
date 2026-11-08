@@ -1,8 +1,9 @@
-const {
-  SlashCommandBuilder,
-  PermissionFlagsBits,
-  MessageFlags,
-} = require("discord.js");
+/**
+ * /commands/utility/warn.js
+ * This file contains the command implementation for warning a user.
+ * Made by ルン1 ©2026
+ *  */
+const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
 const fs = require("node:fs");
 const path = require("node:path");
 
@@ -52,7 +53,6 @@ module.exports = {
   async execute(interaction) {
     const targetUser = interaction.options.getUser("user", true);
     const reason = interaction.options.getString("reason", true);
-
 
     if (targetUser.bot) {
       return interaction.editReply("You can't warn a bot.");

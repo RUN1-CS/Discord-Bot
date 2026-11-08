@@ -1,8 +1,9 @@
-const {
-  SlashCommandBuilder,
-  PermissionFlagsBits,
-  MessageFlags,
-} = require("discord.js");
+/**
+ * /commands/utility/purge.js
+ * This file contains the command implementation for purging a user's messages.
+ * Made by ルン1 ©2026
+ *  */
+const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
 
 const UNIT_MS = { s: 1000, m: 60_000, h: 3_600_000, d: 86_400_000 };
 const BULK_DELETE_LIMIT_MS = 14 * UNIT_MS.d; // Discord can't bulk delete older messages
@@ -49,7 +50,6 @@ module.exports = {
     const targetUser = interaction.options.getUser("user", true);
     const timeInput = interaction.options.getString("time");
     const channel = interaction.channel;
-
 
     // Validate time
     let cutoff = 0; // 0 = no time limit

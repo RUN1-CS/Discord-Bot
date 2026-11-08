@@ -1,8 +1,9 @@
-const {
-  SlashCommandBuilder,
-  PermissionFlagsBits,
-  MessageFlags,
-} = require("discord.js");
+/**
+ * /commands/utility/unban.js
+ * This file contains the command implementation for unbanning a user.
+ * Made by ルン1 ©2026
+ *  */
+const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
 
 module.exports = {
   ephemeral: true,
@@ -29,7 +30,6 @@ module.exports = {
     const targetUser = interaction.options.getUser("user", true);
     const reason =
       interaction.options.getString("reason") ?? "No reason provided";
-
 
     // Make sure the user is actually banned
     const ban = await interaction.guild.bans
