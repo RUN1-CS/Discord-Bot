@@ -36,8 +36,6 @@ async function openTicket(interaction) {
     interaction.options.getString("reason") ?? "No reason provided";
   const { guild, user } = interaction;
 
-  await interaction.deferReply({ flags: MessageFlags.Ephemeral });
-
   const botMember = guild.members.me;
   if (!botMember.permissions.has(PermissionFlagsBits.ManageChannels)) {
     return interaction.editReply(
@@ -146,10 +144,9 @@ async function closeTicket(interaction) {
 
   const ownerId = ticketOwnerId(channel);
   if (!ownerId) {
-    return interaction.reply({
-      content: "This command only works inside a ticket channel.",
-      flags: MessageFlags.Ephemeral,
-    });
+    return interaction.editReply(
+      "This command only works inside a ticket channel.",
+    );
   }
 
   const isOwner = ownerId === user.id;
@@ -159,15 +156,16 @@ async function closeTicket(interaction) {
       member.roles.cache.has(config.ticketStaffRoleId));
 
   if (!isOwner && !isStaff) {
-    return interaction.reply({
-      content: "Only the ticket owner or staff can close this ticket.",
-      flags: MessageFlags.Ephemeral,
-    });
+    return interaction.editReply(
+      "Only the ticket owner or staff can close this ticket.",
+    );
   }
 
-  await interaction.reply(
+  // The deferred reply is private, so announce the closure in the channel itself
+  await channel.send(
     `🔒 Ticket closed by ${user}.\n**Reason:** ${reason}\nThis channel will be deleted in ${CLOSE_DELAY_MS / 1000} seconds.`,
   );
+  await interaction.editReply("Closing the ticket...");
 
   await sleep(CLOSE_DELAY_MS);
 
@@ -179,6 +177,7 @@ async function closeTicket(interaction) {
 }
 
 module.exports = {
+  ephemeral: true, // interactionCreate.js defers the reply (privately) before execute()
   data: new SlashCommandBuilder()
     .setName("ticket")
     .setDescription("Support tickets")
